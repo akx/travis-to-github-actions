@@ -49,6 +49,8 @@ export function ResultView({ result }: { result: ConvertResult }) {
             <AlertDescription>
               The app doesn't yet know how to handle whatever remains in this
               box.
+              <br />
+              If you can help, please open a PR on GitHub ☝️
             </AlertDescription>
           </Alert>
           <Textarea
