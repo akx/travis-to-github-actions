@@ -10,6 +10,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "framer-motion": "^2.9.5",
+    "js-yaml": "^3.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -37,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "@types/js-yaml": "^3.12.5",
     "prettier": "^2.2.1",
     "quicktype": "^15.0.258"
   }
