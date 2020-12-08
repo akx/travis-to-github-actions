@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/travis-to-github-actions/static/css/main.1e60f25c.chunk.css",
-    "main.js": "/travis-to-github-actions/static/js/main.70e5ee15.chunk.js",
-    "main.js.map": "/travis-to-github-actions/static/js/main.70e5ee15.chunk.js.map",
+    "main.js": "/travis-to-github-actions/static/js/main.c712c3a1.chunk.js",
+    "main.js.map": "/travis-to-github-actions/static/js/main.c712c3a1.chunk.js.map",
     "runtime-main.js": "/travis-to-github-actions/static/js/runtime-main.08b4470c.js",
     "runtime-main.js.map": "/travis-to-github-actions/static/js/runtime-main.08b4470c.js.map",
-    "static/js/2.580a45b4.chunk.js": "/travis-to-github-actions/static/js/2.580a45b4.chunk.js",
-    "static/js/2.580a45b4.chunk.js.map": "/travis-to-github-actions/static/js/2.580a45b4.chunk.js.map",
+    "static/js/2.db66851a.chunk.js": "/travis-to-github-actions/static/js/2.db66851a.chunk.js",
+    "static/js/2.db66851a.chunk.js.map": "/travis-to-github-actions/static/js/2.db66851a.chunk.js.map",
     "index.html": "/travis-to-github-actions/index.html",
     "static/css/main.1e60f25c.chunk.css.map": "/travis-to-github-actions/static/css/main.1e60f25c.chunk.css.map",
-    "static/js/2.580a45b4.chunk.js.LICENSE.txt": "/travis-to-github-actions/static/js/2.580a45b4.chunk.js.LICENSE.txt"
+    "static/js/2.db66851a.chunk.js.LICENSE.txt": "/travis-to-github-actions/static/js/2.db66851a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.08b4470c.js",
-    "static/js/2.580a45b4.chunk.js",
+    "static/js/2.db66851a.chunk.js",
     "static/css/main.1e60f25c.chunk.css",
-    "static/js/main.70e5ee15.chunk.js"
+    "static/js/main.c712c3a1.chunk.js"
   ]
 }
