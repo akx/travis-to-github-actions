@@ -1,12 +1,12 @@
 /* eslint-disable no-template-curly-in-string */
-import { ConvertContext } from "./types";
+import { ConvertContext, JobContext } from "./types";
 import { Job } from "../types/github-workflow";
 import { convertPerLanguageSetup } from "./languageSetup";
 import { arrayfy } from "../utils";
 import { convertCache } from "./cache";
 
-function convertJobSteps(ctx: ConvertContext, job: Job) {
-  const { travis, messages } = ctx;
+function convertJobSteps(ctx: JobContext) {
+  const { travis, messages, job } = ctx;
   const { steps } = job;
   arrayfy(travis.install).forEach((command) => {
     steps.push({
@@ -50,8 +50,13 @@ export function convertJob(ctx: ConvertContext): Job {
       },
     ],
   };
-  convertPerLanguageSetup(ctx, job);
-  convertCache(ctx, job);
-  convertJobSteps(ctx, job);
+  const jobContext: JobContext = {
+    ...ctx,
+    job,
+    environmentVariableCombinations: [],
+  };
+  convertPerLanguageSetup(jobContext);
+  convertCache(jobContext);
+  convertJobSteps(jobContext);
   return job;
 }

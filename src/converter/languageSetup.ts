@@ -1,10 +1,9 @@
 /* eslint-disable no-template-curly-in-string */
-import { ConvertContext } from "./types";
-import { Job } from "../types/github-workflow";
+import { JobContext } from "./types";
 import { arrayfy } from "../utils";
 
-function convertPythonSetup(ctx: ConvertContext, job: Job) {
-  const { travis } = ctx;
+function convertPythonSetup(ctx: JobContext) {
+  const { travis, job } = ctx;
   if (travis.language === "python" || travis.python) {
     job.strategy.matrix["python-version"] = arrayfy(travis.python) || ["3.8"];
     job.steps.push({
@@ -19,8 +18,8 @@ function convertPythonSetup(ctx: ConvertContext, job: Job) {
   }
 }
 
-function convertNodeSetup(ctx: ConvertContext, job: Job) {
-  const { travis, messages } = ctx;
+function convertNodeSetup(ctx: JobContext) {
+  const { travis, messages, job } = ctx;
 
   if (travis.language === "node_js" || travis.node_js) {
     // TODO: parse used versions
@@ -42,7 +41,7 @@ function convertNodeSetup(ctx: ConvertContext, job: Job) {
   }
 }
 
-export function convertPerLanguageSetup(ctx: ConvertContext, job: Job) {
-  convertPythonSetup(ctx, job);
-  convertNodeSetup(ctx, job);
+export function convertPerLanguageSetup(ctx: JobContext) {
+  convertPythonSetup(ctx);
+  convertNodeSetup(ctx);
 }

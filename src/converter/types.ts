@@ -1,5 +1,5 @@
 import { Travis } from "../types/travis";
-import { GithubWorkflow } from "../types/github-workflow";
+import { GithubWorkflow, Job } from "../types/github-workflow";
 
 export type ConvertMessage = { type: "info" | "warning"; text: string };
 
@@ -15,4 +15,9 @@ export interface ConvertResult {
   messages: ConvertMessage[];
   error?: string;
   errorDetail?: any;
+}
+
+export interface JobContext extends ConvertContext {
+  job: Job;
+  environmentVariableCombinations: Array<Record<string, string>>;
 }
