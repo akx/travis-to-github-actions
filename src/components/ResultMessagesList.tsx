@@ -10,8 +10,8 @@ export function ResultMessagesList({
   if (!messages.length) return null;
   return (
     <div>
-      {messages.map(({ type, text }) => (
-        <Alert status={type}>
+      {messages.map(({ type, text }, index) => (
+        <Alert status={type} key={`${text} ${index}`}>
           <AlertIcon />
           <AlertDescription>{text}</AlertDescription>
         </Alert>
