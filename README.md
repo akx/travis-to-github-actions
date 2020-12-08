@@ -4,7 +4,19 @@ This utility helps you convert Travis CI configuration files to the GitHub Actio
 
 ## Usage
 
+### Online
+
 The `master` branch of the repository is automatically deployed to https://akx.github.io/travis-to-github-actions/ 
+
+### Command-line usage
+
+If you install `ts-node`, you can run e.g.
+
+```
+./node_modules/.bin/ts-node -O '{"module": "CommonJS"}' bin/convert.ts < .travis.yml
+```
+
+to get a GitHub workflow. (Running via `yarn`, e.g. `yarn ts-node`, loses the stdin redirection.)
 
 ## Contributing
 
