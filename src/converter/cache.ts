@@ -25,4 +25,5 @@ export function convertCache(ctx: ConvertContext, job: Job) {
     type: "info",
     text: "Please revise the cache key for `actions/cache`.",
   });
+  delete ctx.travis.cache;
 }
