@@ -20,5 +20,6 @@ export interface ConvertResult {
 export interface JobContext extends ConvertContext {
   steps: Step[];
   environmentVariableCombinations: Array<Record<string, string>>;
+  environmentVariables: Record<string, true>; // Value not used just yet
   matrixAspects: Record<string, string[]>;
 }

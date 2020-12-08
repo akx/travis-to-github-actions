@@ -10,6 +10,7 @@ export interface Step {
   name?: string;
   with?: object;
   run?: string;
+  env?: Record<string, string>;
 }
 
 export interface Strategy {
@@ -18,7 +19,7 @@ export interface Strategy {
 
 export interface Matrix {
   [key: string]: any;
-  os: string[];
+  os?: string[];
   exclude?: object[];
   include?: object[];
 }
