@@ -1,17 +1,34 @@
-import React from 'react';
+import { SimpleGrid, Textarea } from "@chakra-ui/react";
+import React from "react";
+import "./App.css";
+import { convertToGHA } from "./converter";
+
+function useTravisConversion(yaml: string) {
+  return React.useMemo(() => {
+    try {
+      return convertToGHA(yaml);
+    } catch (exc) {
+      return { error: `${exc}`, exc };
+    }
+  }, [yaml]);
+}
 
 function App() {
+  const [travisYaml, setTravisYaml] = React.useState("");
+  const conversionResult = useTravisConversion(travisYaml);
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SimpleGrid columns={2} padding={10} spacing={10} style={{ flex: 1 }}>
+      <Textarea
+        placeholder="Paste a travis.yml here"
+        value={travisYaml}
+        onChange={(e) => setTravisYaml(e.target.value)}
+      />
+      <Textarea
+        placeholder="GitHub Actions YAML will appear here"
+        readonly
+        value={JSON.stringify(conversionResult)}
+      />
+    </SimpleGrid>
   );
 }
 
