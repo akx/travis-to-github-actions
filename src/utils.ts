@@ -1,5 +1,8 @@
-export function arrayfy<T>(x: T | T[] | undefined): T[] {
-  if (x === undefined) return [];
+export function arrayfy<T>(
+  x: T | T[] | undefined,
+  defaultValue: readonly T[] = []
+): T[] {
+  if (x === undefined) return [...defaultValue];
   if (!Array.isArray(x)) return [x];
   return x;
 }

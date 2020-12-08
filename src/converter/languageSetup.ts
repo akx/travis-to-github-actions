@@ -5,7 +5,7 @@ import { arrayfy } from "../utils";
 function convertPythonSetup(ctx: JobContext) {
   const { travis, matrixAspects, steps } = ctx;
   if (travis.language === "python" || travis.python) {
-    matrixAspects["python-version"] = arrayfy(travis.python) || ["3.8"];
+    matrixAspects["python-version"] = arrayfy<string>(travis.python, ["3.8"]);
     steps.push({
       name: "Set up Python ${{ matrix.python-version }}",
       uses: "actions/setup-python@v2",
