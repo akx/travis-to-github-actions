@@ -1,16 +1,12 @@
 /* eslint-disable no-template-curly-in-string */
 import { ConvertContext } from "./types";
 import { Job } from "../types/github-workflow";
+import { arrayfy } from "../utils";
 
 function convertPythonSetup(ctx: ConvertContext, job: Job) {
-  const { travis, messages } = ctx;
+  const { travis } = ctx;
   if (travis.language === "python" || travis.python) {
-    // TODO: parse used versions
-    messages.push({
-      type: "info",
-      text: "Python versions are not yet parsed from the Travis configuration.",
-    });
-    job.strategy.matrix["python-version"] = ["3.8"];
+    job.strategy.matrix["python-version"] = arrayfy(travis.python) || ["3.8"];
     job.steps.push({
       name: "Set up Python ${{ matrix.python-version }}",
       uses: "actions/setup-python@v2",
