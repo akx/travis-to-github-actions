@@ -3,7 +3,7 @@ import { JobContext } from "./types";
 import { arrayfy } from "../utils";
 
 export function convertCache(ctx: JobContext) {
-  let { travis, job, messages } = ctx;
+  const { travis, steps, messages } = ctx;
   if (!travis.cache) {
     return;
   }
@@ -13,7 +13,7 @@ export function convertCache(ctx: JobContext) {
   if (!travis.cache.directories) {
     return;
   }
-  job.steps.push({
+  steps.push({
     name: "Cache multiple paths",
     uses: "actions/cache@v2",
     with: {

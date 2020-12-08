@@ -19,7 +19,8 @@ export interface Strategy {
 export interface Matrix {
   [key: string]: any;
   os: string[];
-  exclude: object[];
+  exclude?: object[];
+  include?: object[];
 }
 
 export interface GithubWorkflow {

@@ -1,13 +1,12 @@
 /* eslint-disable no-template-curly-in-string */
 import { ConvertContext, JobContext } from "./types";
-import { Job } from "../types/github-workflow";
+import { Job, Strategy } from "../types/github-workflow";
 import { convertPerLanguageSetup } from "./languageSetup";
 import { arrayfy } from "../utils";
 import { convertCache } from "./cache";
 
 function convertJobSteps(ctx: JobContext) {
-  const { travis, messages, job } = ctx;
-  const { steps } = job;
+  const { travis, messages, steps } = ctx;
   arrayfy(travis.install).forEach((command) => {
     steps.push({
       run: command,
@@ -35,28 +34,28 @@ function convertJobSteps(ctx: JobContext) {
   }
 }
 
-export function convertJob(ctx: ConvertContext): Job {
-  const job: Job = {
-    "runs-on": "${{ matrix.os }}",
-    strategy: {
-      matrix: {
-        os: ["ubuntu-18.04"],
-        exclude: [],
-      },
+function buildStrategy(jobContext: JobContext): Strategy {
+  return {
+    matrix: {
+      os: ["ubuntu-18.04"],
+      ...jobContext.matrixAspects,
     },
-    steps: [
-      {
-        uses: "actions/checkout@v2",
-      },
-    ],
   };
+}
+
+export function convertJob(ctx: ConvertContext): Job {
   const jobContext: JobContext = {
     ...ctx,
-    job,
+    steps: [],
     environmentVariableCombinations: [],
+    matrixAspects: {},
   };
   convertPerLanguageSetup(jobContext);
   convertCache(jobContext);
   convertJobSteps(jobContext);
-  return job;
+  return {
+    "runs-on": "${{ matrix.os }}",
+    strategy: buildStrategy(jobContext),
+    steps: jobContext.steps,
+  };
 }

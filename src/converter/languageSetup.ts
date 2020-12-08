@@ -3,10 +3,10 @@ import { JobContext } from "./types";
 import { arrayfy } from "../utils";
 
 function convertPythonSetup(ctx: JobContext) {
-  const { travis, job } = ctx;
+  const { travis, matrixAspects, steps } = ctx;
   if (travis.language === "python" || travis.python) {
-    job.strategy.matrix["python-version"] = arrayfy(travis.python) || ["3.8"];
-    job.steps.push({
+    matrixAspects["python-version"] = arrayfy(travis.python) || ["3.8"];
+    steps.push({
       name: "Set up Python ${{ matrix.python-version }}",
       uses: "actions/setup-python@v2",
       with: {
@@ -19,7 +19,7 @@ function convertPythonSetup(ctx: JobContext) {
 }
 
 function convertNodeSetup(ctx: JobContext) {
-  const { travis, messages, job } = ctx;
+  const { travis, messages, steps, matrixAspects } = ctx;
 
   if (travis.language === "node_js" || travis.node_js) {
     // TODO: parse used versions
@@ -28,8 +28,8 @@ function convertNodeSetup(ctx: JobContext) {
       text:
         "Node.js versions are not yet parsed from the Travis configuration.",
     });
-    job.strategy.matrix["node-version"] = ["14.x"];
-    job.steps.push({
+    matrixAspects["node-version"] = ["14.x"];
+    steps.push({
       name: "Set up Node.js ${{ matrix.node-version }}",
       uses: "actions/setup-node@v1",
       with: {
