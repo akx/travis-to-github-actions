@@ -41,5 +41,10 @@
     "@types/js-yaml": "^3.12.5",
     "prettier": "^2.2.1",
     "quicktype": "^15.0.258"
-  }
+  },
+  "homepage": "https://akx.github.io/travis-to-github-actions/",
+  "main": "index.js",
+  "repository": "git@github.com:akx/travis-to-github-actions.git",
+  "author": "Aarni Koskela <akx@iki.fi>",
+  "license": "MIT"
 }

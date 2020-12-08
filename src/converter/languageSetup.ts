@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import { ConvertContext } from "./types";
 import { Job } from "../types/github-workflow";
 
