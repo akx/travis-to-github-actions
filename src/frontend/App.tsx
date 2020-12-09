@@ -1,13 +1,12 @@
 import { Flex, Heading, Textarea } from "@chakra-ui/react";
 import React from "react";
 import "./App.css";
-import { convertToGHA } from "./converter/converter";
-import { ConvertResult } from "./converter/types";
+import { convertToGHA } from "../converter/converter";
 import { ResultView } from "./components/ResultView";
 import Header from "./components/Header";
 import babelPyExample from "./examples/babelpy.travis.yml";
 
-function useTravisConversion(yaml: string): ConvertResult {
+function useTravisConversion(yaml: string) {
   return React.useMemo(() => {
     try {
       return convertToGHA(yaml);

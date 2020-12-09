@@ -1,5 +1,5 @@
-import { Travis } from "../types/travis";
-import { GithubWorkflow, Step } from "../types/github-workflow";
+import { Travis } from "./types/travis";
+import { GithubWorkflow, Step } from "./types/github-workflow";
 
 export type ConvertMessage = { type: "info" | "warning"; text: string };
 

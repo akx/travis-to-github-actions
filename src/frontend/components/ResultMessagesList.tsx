@@ -1,4 +1,4 @@
-import { ConvertMessage } from "../converter/types";
+import { ConvertMessage } from "../../converter/types";
 import { Alert, AlertDescription, AlertIcon } from "@chakra-ui/react";
 import React from "react";
 

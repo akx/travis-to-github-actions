@@ -1,6 +1,6 @@
 import { JobContext } from "./types";
-import { Strategy } from "../types/github-workflow";
-import { permutations } from "../utils";
+import { Strategy } from "./types/github-workflow";
+import { permutations } from "./utils";
 
 function expandMatrixIntoIncludes(jobContext: JobContext) {
   const finalMatrixAspects: Record<string, any[]> = {

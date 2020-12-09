@@ -1,6 +1,6 @@
 import { JobContext } from "./types";
-import { Step } from "../types/github-workflow";
-import { arrayfy } from "../utils";
+import { Step } from "./types/github-workflow";
+import { arrayfy } from "./utils";
 
 function getStepEnvFragment(ctx: JobContext) {
   if (!Object.keys(ctx.environmentVariables).length) {

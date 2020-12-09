@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import { JobContext } from "./types";
-import { arrayfy } from "../utils";
+import { arrayfy } from "./utils";
 
 export function convertCache(ctx: JobContext) {
   const { travis, steps, messages } = ctx;

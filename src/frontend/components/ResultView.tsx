@@ -1,4 +1,4 @@
-import { ConvertResult } from "../converter/types";
+import { ConvertResult } from "../../converter/types";
 import {
   Alert,
   AlertDescription,

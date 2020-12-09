@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import { JobContext } from "./types";
-import { arrayfy } from "../utils";
+import { arrayfy } from "./utils";
 
 function convertPythonSetup(ctx: JobContext) {
   const { travis, matrixAspects, steps } = ctx;

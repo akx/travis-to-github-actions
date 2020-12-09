@@ -1,8 +1,8 @@
 /* eslint-disable no-template-curly-in-string */
 import { safeDump, safeLoad } from "js-yaml";
-import { Travis } from "../types/travis";
+import { Travis } from "./types/travis";
 import { ConvertContext, ConvertResult } from "./types";
-import { GithubWorkflow } from "../types/github-workflow";
+import { GithubWorkflow } from "./types/github-workflow";
 import { processPrelude } from "./prelude";
 import { convertJob } from "./job";
 

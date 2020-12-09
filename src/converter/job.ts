@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import { ConvertContext, JobContext } from "./types";
-import { Job } from "../types/github-workflow";
+import { Job } from "./types/github-workflow";
 import { convertPerLanguageSetup } from "./languageSetup";
 import { convertCache } from "./cache";
 import { convertEnvironmentVariables } from "./env";
