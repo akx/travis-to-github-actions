@@ -15,6 +15,10 @@ export function convertJobSteps(ctx: JobContext) {
   const { travis, messages, steps } = ctx;
   const env = getStepEnvFragment(ctx);
 
+  steps.push({
+    uses: "actions/checkout@v2",
+  });
+
   function maybeInjectEnv(step: Step): Step {
     // If the step looks like it uses an environment variable, inject all of them into the step
     if (env && step.run && step.run.includes("$")) {
