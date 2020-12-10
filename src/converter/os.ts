@@ -1,5 +1,5 @@
 import { JobContext } from "./types";
-import { arrayfy, deleteIfEmpty } from "./utils";
+import { arrayfy } from "./utils";
 import { Addons } from "./types/travis";
 
 function consumePackageManagerObject(
@@ -23,7 +23,6 @@ function consumePackageManagerObject(
     } else {
       packages = new Set(arrayfy(spec.packages));
       delete spec.packages;
-      deleteIfEmpty(addons, key);
     }
   }
   return packages;

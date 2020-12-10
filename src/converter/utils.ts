@@ -38,3 +38,27 @@ export function deleteIfEmpty<T extends object>(
   }
   return false;
 }
+
+export function isEmpty(obj: any): boolean {
+  return (
+    (typeof obj === "object" && Object.keys(obj).length === 0) ||
+    (Array.isArray(obj) && obj.length === 0)
+  );
+}
+
+export function removeEmptyObjects(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(removeEmptyObjects);
+  }
+  if (typeof obj === "object") {
+    const newObject: Record<string, any> = {};
+    Object.keys(obj).forEach((key) => {
+      const newValue = removeEmptyObjects(obj[key]);
+      if (!isEmpty(newValue)) {
+        newObject[key] = newValue;
+      }
+    });
+    return newObject;
+  }
+  return obj;
+}

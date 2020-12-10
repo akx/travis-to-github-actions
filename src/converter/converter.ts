@@ -5,6 +5,7 @@ import { ConvertContext, ConvertResult } from "./types";
 import { GithubWorkflow } from "./types/github-workflow";
 import { processPrelude } from "./prelude";
 import { convertJob } from "./job";
+import { isEmpty, removeEmptyObjects } from "./utils";
 
 function makeContext(travisYaml: string): ConvertContext {
   const travis = (safeLoad(travisYaml) as unknown) as Travis;
@@ -32,11 +33,13 @@ export function convertToGHA(travisYaml: string): ConvertResult {
   const { travis, messages, github } = ctx;
   processPrelude(ctx);
   github.jobs["Build"] = convertJob(ctx);
+  const remainingTravis = removeEmptyObjects(travis);
 
   return {
     yaml: safeDump(github),
     messages,
-    remainingTravis:
-      travis && Object.keys(travis).length ? safeDump(travis) : undefined,
+    remainingTravis: !isEmpty(remainingTravis)
+      ? safeDump(remainingTravis)
+      : undefined,
   };
 }
