@@ -23,3 +23,18 @@ export function permutations<T>(
     );
   }
 }
+
+export function deleteIfEmpty<T extends object>(
+  obj: T | undefined,
+  key: keyof T
+) {
+  if (
+    obj &&
+    typeof obj[key] === "object" &&
+    Object.keys(obj[key]).length === 0
+  ) {
+    delete obj[key];
+    return true;
+  }
+  return false;
+}

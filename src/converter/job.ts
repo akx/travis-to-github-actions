@@ -6,6 +6,7 @@ import { convertCache } from "./cache";
 import { convertEnvironmentVariables } from "./env";
 import { convertJobSteps } from "./steps";
 import { buildStrategy } from "./strategy";
+import { convertOperatingSystemSetup } from "./os";
 
 export function convertJob(ctx: ConvertContext): Job {
   const jobContext: JobContext = {
@@ -18,6 +19,7 @@ export function convertJob(ctx: ConvertContext): Job {
     },
   };
   convertEnvironmentVariables(jobContext);
+  convertOperatingSystemSetup(jobContext);
   convertPerLanguageSetup(jobContext);
   convertCache(jobContext);
   convertJobSteps(jobContext);

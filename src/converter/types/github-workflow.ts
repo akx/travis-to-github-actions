@@ -11,6 +11,7 @@ export interface Step {
   with?: object;
   run?: string;
   env?: Record<string, string>;
+  if?: string;
 }
 
 export interface Strategy {
