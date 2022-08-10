@@ -32,7 +32,7 @@ export function convertToGHA(travisYaml: string): ConvertResult {
   const ctx = makeContext(travisYaml);
   const { travis, messages, github } = ctx;
   processPrelude(ctx);
-  github.jobs["Build"] = convertJob(ctx);
+  github.jobs["build"] = convertJob(ctx);
   const remainingTravis = removeEmptyObjects(travis);
 
   return {
