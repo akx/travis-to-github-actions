@@ -36,10 +36,10 @@ export function convertToGHA(travisYaml: string): ConvertResult {
   const remainingTravis = removeEmptyObjects(travis);
 
   return {
-    yaml: safeDump(github),
+    yaml: safeDump(github, {noCompatMode: true}),
     messages,
     remainingTravis: !isEmpty(remainingTravis)
-      ? safeDump(remainingTravis)
+      ? safeDump(remainingTravis, {noCompatMode: true})
       : undefined,
   };
 }
